@@ -11,10 +11,11 @@ void fillMatrix(int** matrix, int n, int m);
 void deletMatrix(int** matrix, int n, int m);
 void chanderRowCoulmn(int** matrix, int n, int m, int k);
 int getRowNumWithMaxAvg(int** matrix, int n, int m);
+void fillNull(int** matrix, int n, int m);
 
-    //task #11
 int main()
 {
+    //task #11
 	srand(time(NULL));
 	int size1 = 5;
 	int index = 2; //םמלונ סענט/סעמכבצא הכÿ חאלוםû
@@ -36,6 +37,17 @@ int main()
 	printMatrix(matrix1, size2, size2);
 	int index1 = getRowNumWithMaxAvg(matrix2, size2, size2);
 	cout << "Row index with max average: " << index1 + 1 << endl;
+
+
+	//task 1ris
+	int size3 = 20;
+	int** matrix3 = formMatrix(size3, size3);
+	fillMatrix(matrix3, size3, size3);
+	cout << "Matrix: " << endl;
+	printMatrix(matrix3, size3, size3);
+	cout << "Fill with nulls" << endl;
+	fillNull(matrix3, size3, size3);
+	printMatrix(matrix3, size3, size3);
 
 	return 0;
 }
@@ -121,4 +133,18 @@ int getRowNumWithMaxAvg(int** matrix, int n, int m)
 		}
 	}
 	return rowIndex;
+}
+
+void fillNull(int** matrix, int n, int m)
+{
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			if (i < n / 2 &&j >= i && j < n - i)
+			{
+				matrix[i][j] = 0;
+			}
+		}
+	}
 }
