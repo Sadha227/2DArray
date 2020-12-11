@@ -10,6 +10,7 @@ void printMatrix(int** matrix, int n, int m);
 void fillMatrix(int** matrix, int n, int m);
 void deletMatrix(int** matrix, int n, int m);
 void chanderRowCoulmn(int** matrix, int n, int m, int k);
+int getRowNumWithMaxAvg(int** matrix, int n, int m);
 
     //task #11
 int main()
@@ -25,6 +26,17 @@ int main()
 	cout << "Matrix after xhange " << index + 1 << "row coulumn" << endl;
 	printMatrix(matrix1, size1, size1);
 	deletMatrix(matrix1, size1, size1);
+
+
+	//task #10 - нфйти номер строки для которой сруднуу арифметическое элементов строки наибольшее
+	int size2 = 3;
+	int** matrix2 = formMatrix(size1, size1);
+	fillMatrix(matrix1, size2, size1);
+	cout << "Matrix: " << endl;
+	printMatrix(matrix1, size2, size2);
+	int index1 = getRowNumWithMaxAvg(matrix2, size2, size2);
+	cout << "Row index with max average: " << index1 + 1 << endl;
+
 	return 0;
 }
 
@@ -88,4 +100,25 @@ void chanderRowCoulmn(int** matrix, int n, int m, int k)
 
 		}
 	}*/
+}
+
+int getRowNumWithMaxAvg(int** matrix, int n, int m)
+{
+	int rowIndex = 0;
+	double max = -9999;
+	for (int i = 0; i < n; i++)
+	{
+	    int sum = 0;
+		for (int j = 0; j < m; j++)
+		{
+			sum += matrix[i][j];
+		}
+		double avg = sum / m;
+		if (avg > max)
+		{
+			max = avg;
+			rowIndex = i;
+		}
+	}
+	return rowIndex;
 }
