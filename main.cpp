@@ -29,7 +29,7 @@ int main()
 	deletMatrix(matrix1, size1, size1);
 
 
-	//task #10 - нфйти номер строки для которой сруднуу арифметическое элементов строки наибольшее
+	//task #10 - нaйти номер строки для которой сруднуу арифметическое элементов строки наибольшее
 	int size2 = 3;
 	int** matrix2 = formMatrix(size1, size1);
 	fillMatrix(matrix1, size2, size1);
@@ -140,8 +140,31 @@ void fillNull(int** matrix, int n, int m)
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < m; j++)
-		{
-			if (i < n / 2 &&j >= i && j < n - i)
+		{/*
+			if (i < n / 2 &&j >= i && j <= n - 1 - i)
+			{
+				matrix[i][j] = 0;
+			}
+			else if (i >= n / 2 && (j >= n - 1 - i && j <= i))
+			{
+				matrix[i][j] = 0;
+			}*/
+
+			//4
+			if (j < n / 2 && (j <= i && j <= n - 1 - i))
+			{
+				matrix[i][j] = 0;
+			}
+			else if (j >= n / 2 && (j <= i && j <= n - 1 - i))
+			{
+				matrix[i][j] = 0;
+			}
+			//6
+			if (j < n / 2 && (j <= i && j <= n - 1 - i))
+			{
+				matrix[i][j] = 0;
+			}
+			else if (j >= n / 2 && (j >= i && j >= n - 1 - i))
 			{
 				matrix[i][j] = 0;
 			}
